@@ -1,6 +1,6 @@
 name 'elk_cookbook'
-maintainer 'The Authors'
-maintainer_email 'you@example.com'
+maintainer 'Jose M. Tobar'
+maintainer_email 'josemtobarjobs@gmail.com'
 license 'All Rights Reserved'
 description 'Installs/Configures elk_cookbook'
 long_description 'Installs/Configures elk_cookbook'
