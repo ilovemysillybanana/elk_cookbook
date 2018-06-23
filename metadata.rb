@@ -2,19 +2,21 @@ name 'elk_cookbook'
 maintainer 'Jose M. Tobar'
 maintainer_email 'josemtobarjobs@gmail.com'
 license 'All Rights Reserved'
-description 'Installs/Configures elk_cookbook'
-long_description 'Installs/Configures elk_cookbook'
+description 'Installs/Configures Elasticsearch, Logstash and Kibana'
+long_description 'Installs/Configures Elasticsearch, Logstash and Kibana'
 version '0.1.0'
 chef_version '>= 12.14' if respond_to?(:chef_version)
 
-# The `issues_url` points to the location where issues for this cookbook are
-# tracked.  A `View Issues` link will be displayed on this cookbook's page when
-# uploaded to a Supermarket.
-#
-# issues_url 'https://github.com/<insert_org_here>/elk_cookbook/issues'
+depends 'java', '~> 2.1.0'
+depends 'elasticsearch', '~> 4.0.1'
+depends 'nginx', '~> 8.1.2'
+depends 'selinux', '~> 2.1.1'
 
-# The `source_url` points to the development repository for this cookbook.  A
-# `View Source` link will be displayed on this cookbook's page when uploaded to
-# a Supermarket.
-#
-# source_url 'https://github.com/<insert_org_here>/elk_cookbook'
+supports 'amazon', '>= 2018.03'
+supports 'centos', '>= 7.0'
+supports 'fedora', '~> 28.0'
+supports 'oracle', '>= 7.0'
+supports 'redhat', '>= 7.0'
+
+source_url 'https://github.com/ilovemysillybanana/elk_cookbook' if respond_to?(:source_url)
+issues_url 'https://github.com/ilovemysillybanana/elk_cookbook/issues' if respond_to?(:issues_url)
