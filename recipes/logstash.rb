@@ -15,3 +15,28 @@ rpm_package 'Installing logstash' do
   package_name '/tmp/logstash.rpm'
   action :install
 end
+
+service 'logstash' do
+  supports :status => true, :restart => true, :reload => true
+  action [ :enable, :start ]
+end
+
+cookbook_file '/etc/pki/tls/certs/logstash-forwarder.crt' do
+  source 'logstash-forwarder.crt'
+  mode '0644'
+  action :create
+end
+
+cookbook_file '/etc/pki/tls/private/logstash-forwarder.key' do
+  source 'logstash-forwarder.key'
+  mode '0644'
+  action :create
+end
+
+template 'Configuring logstash' do
+  source 'logstash.conf.erb'
+  path   '/etc/logstash/conf.d/logstash.conf'
+  mode   0644
+  action :create
+  notifies :restart, 'service[logstash]', :immediate
+end
